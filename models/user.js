@@ -15,6 +15,15 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 userSchema.plugin(passportLocalMongoose);

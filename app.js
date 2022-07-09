@@ -4,10 +4,11 @@ var path = require("path");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var usersRouter = require("./routes/usersRouter");
 const campsiteRouter = require("./routes/campsiteRouter");
 const promotionRouter = require("./routes/promotionRouter");
 const partnerRouter = require("./routes/partnerRouter");
+const uploadRouter = require("./routes/uploadRouter");
 const passport = require("passport");
 const config = require("./config");
 var app = express();
@@ -41,6 +42,7 @@ app.use("/users", usersRouter);
 app.use("/campsites", campsiteRouter);
 app.use("/promotions", promotionRouter);
 app.use("/partners", partnerRouter);
+app.use("/imageUpload", uploadRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -61,7 +63,7 @@ connect.then(
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404));
+  // next(createError(404));
 });
 
 // error handler
